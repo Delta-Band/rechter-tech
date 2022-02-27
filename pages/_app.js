@@ -7,9 +7,11 @@ import TagManager from 'react-gtm-module';
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    TagManager.initialize({
-      gtmId: 'GTM-NG9D255'
-    });
+    if (process.env.NEXT_PUBLIC_GTM_KEY) {
+      TagManager.initialize({
+        gtmId: process.env.NEXT_PUBLIC_GTM_KEY
+      });
+    }
   }, []);
 
   return (
